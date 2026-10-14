@@ -1,0 +1,49 @@
+@model List<CategoryListItem>
+@{
+    ViewData["Title"] = L["Dish categories"].Value;
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">@L["Dish categories"]</h1>
+    <a class="btn btn-primary" asp-action="Create">+ @L["Add category"]</a>
+</div>
+
+<div class="card">
+    <table class="table table-hover mb-0">
+        <thead class="table-light">
+            <tr>
+                <th>Id</th>
+                <th>@L["Category name"]</th>
+                <th>@L["Description"]</th>
+                <th class="text-end">@L["Number of dishes"]</th>
+                <th class="text-end">@L["Actions"]</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var c in Model)
+            {
+                <tr>
+                    <td>@c.Id</td>
+                    @* Bấm tên loại -> mở danh sách món đã lọc theo loại này *@
+                    <td class="fw-semibold">
+                        <a class="text-decoration-none" asp-controller="Dishes" asp-action="Index" asp-route-categoryId="@c.Id">@c.Name</a>
+                    </td>
+                    <td>@c.Description</td>
+                    <td class="text-end">@c.DishCount</td>
+                    <td class="text-end text-nowrap">
+                        <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@c.Id">@L["Edit"]</a>
+                        @* Xóa: Controller sẽ chặn nếu loại vẫn còn món *@
+                        <form class="d-inline" asp-action="Delete" asp-route-id="@c.Id" method="post"
+                              onsubmit="return confirm('@L["Delete this category?"]');">
+                            <button type="submit" class="btn btn-sm btn-outline-danger">@L["Delete"]</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+            @if (Model.Count == 0)
+            {
+                <tr><td colspan="5" class="text-center text-muted py-4">@L["No categories yet."]</td></tr>
+            }
+        </tbody>
+    </table>
+</div>

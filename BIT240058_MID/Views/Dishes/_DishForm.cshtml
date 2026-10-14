@@ -1,0 +1,49 @@
+@model Dish_BIT240058
+@*
+    Phần form dùng CHUNG cho trang Create và Edit.
+    - asp-for: tự sinh name/id, điền sẵn giá trị và nhãn (nhãn lấy từ [Display] trong Model, đã được dịch)
+    - asp-validation-for: hiển thị câu báo lỗi validation (đã được dịch) ngay dưới ô nhập
+*@
+
+@* Lỗi chung không gắn với ô nào (vd: lỗi khi lưu DB) *@
+<div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+<div class="mb-3">
+    <label asp-for="Name" class="form-label"></label> <span class="text-danger">*</span>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger small"></span>
+</div>
+
+@* Ô chọn loại món: danh sách lấy từ DATABASE (ViewData["Categories"] do Controller nạp) *@
+<div class="mb-3">
+    <label asp-for="DishCategoryId" class="form-label"></label> <span class="text-danger">*</span>
+    <select asp-for="DishCategoryId" asp-items="@(ViewData["Categories"] as SelectList)" class="form-select">
+        <option value="0">@L["-- Select a category --"]</option>
+    </select>
+    <span asp-validation-for="DishCategoryId" class="text-danger small"></span>
+</div>
+
+<div class="row">
+    <div class="col-md-6 mb-3">
+        <label asp-for="Price" class="form-label"></label> <span class="text-danger">*</span>
+        <input asp-for="Price" type="text" inputmode="numeric" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger small"></span>
+    </div>
+    <div class="col-md-6 mb-3">
+        <label asp-for="PreparationTime" class="form-label"></label> <span class="text-danger">*</span>
+        <input asp-for="PreparationTime" type="text" inputmode="numeric" class="form-control" />
+        <span asp-validation-for="PreparationTime" class="text-danger small"></span>
+        <div class="form-text">@L["≤ 15 minutes: Quick; > 15 minutes: Regular"]</div>
+    </div>
+</div>
+
+<div class="mb-3">
+    <label asp-for="Description" class="form-label"></label>
+    <textarea asp-for="Description" rows="3" class="form-control"></textarea>
+    <span asp-validation-for="Description" class="text-danger small"></span>
+</div>
+
+<div class="form-check form-switch mb-4">
+    <input asp-for="IsAvailable" class="form-check-input" />
+    <label asp-for="IsAvailable" class="form-check-label"></label>
+</div>

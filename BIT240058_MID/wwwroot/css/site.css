@@ -1,0 +1,20 @@
+body { background: #f5f6f8; }
+.card { border: 0; box-shadow: 0 1px 3px rgba(0, 0, 0, .08); }
+.table td, .table th { vertical-align: middle; }
+.thumb-sm { width: 72px; height: 48px; object-fit: cover; border-radius: 6px; }
+.thumb-empty { width: 72px; height: 48px; border-radius: 6px; background: #e9ecef;
+    display: flex; align-items: center; justify-content: center; font-size: 11px; color: #6c757d; text-align: center; }
+.gallery-img { width: 100%; height: 170px; object-fit: cover; }
+.gallery-card.is-thumb { outline: 3px solid #0d6efd; }
+.hero-img { width: 100%; max-height: 300px; object-fit: cover; border-radius: 8px; }
+.price { white-space: nowrap; font-variant-numeric: tabular-nums; }
+/* Cờ trên nút chuyển ngôn ngữ */
+.flag {
+    width: 20px;
+    height: 13px;
+    object-fit: cover;
+    border-radius: 2px;
+    margin-right: 4px;
+    vertical-align: -1px;
+    box-shadow: 0 0 0 1px rgba(0, 0, 0, .15);
+}

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Bản dịch TIẾNG VIỆT. Khóa (name) là câu tiếng Anh; value là câu tiếng Việt. -->
+<root>
+  <resheader name="resmimetype"><value>text/microsoft-resx</value></resheader>
+  <resheader name="version"><value>2.0</value></resheader>
+  <resheader name="reader"><value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <resheader name="writer"><value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value></resheader>
+  <data name="Dish Management" xml:space="preserve"><value>Quản lý món ăn</value></data>
+  <data name="Dishes" xml:space="preserve"><value>Món ăn</value></data>
+  <data name="Dish categories" xml:space="preserve"><value>Loại món ăn</value></data>
+  <data name="Midterm test - Dish Management" xml:space="preserve"><value>Kiểm tra giữa kỳ - Quản lý món ăn</value></data>
+  <data name="Save" xml:space="preserve"><value>Lưu</value></data>
+  <data name="Cancel" xml:space="preserve"><value>Hủy</value></data>
+  <data name="Edit" xml:space="preserve"><value>Sửa</value></data>
+  <data name="Delete" xml:space="preserve"><value>Xóa</value></data>
+  <data name="Details" xml:space="preserve"><value>Chi tiết</value></data>
+  <data name="Actions" xml:space="preserve"><value>Thao tác</value></data>
+  <data name="Description" xml:space="preserve"><value>Mô tả</value></data>
+  <data name="Back to list" xml:space="preserve"><value>Quay lại danh sách</value></data>
+  <data name="Back to dish list" xml:space="preserve"><value>Về danh sách món ăn</value></data>
+  <data name="Dish list" xml:space="preserve"><value>Danh sách món ăn</value></data>
+  <data name="Add dish" xml:space="preserve"><value>Thêm món ăn</value></data>
+  <data name="Edit dish" xml:space="preserve"><value>Sửa món ăn</value></data>
+  <data name="Dish name" xml:space="preserve"><value>Tên món ăn</value></data>
+  <data name="Dish category" xml:space="preserve"><value>Loại món ăn</value></data>
+  <data name="Status" xml:space="preserve"><value>Trạng thái</value></data>
+  <data name="Sort by" xml:space="preserve"><value>Sắp xếp</value></data>
+  <data name="Default" xml:space="preserve"><value>Mặc định</value></data>
+  <data name="Min price" xml:space="preserve"><value>Giá thấp nhất</value></data>
+  <data name="Max price" xml:space="preserve"><value>Giá cao nhất</value></data>
+  <data name="Search / Filter" xml:space="preserve"><value>Tìm kiếm / Lọc</value></data>
+  <data name="Clear filters" xml:space="preserve"><value>Xóa bộ lọc</value></data>
+  <data name="Enter part of the name..." xml:space="preserve"><value>Nhập một phần tên món...</value></data>
+  <data name="-- All categories --" xml:space="preserve"><value>-- Tất cả loại --</value></data>
+  <data name="-- All --" xml:space="preserve"><value>-- Tất cả --</value></data>
+  <data name="Price: low to high" xml:space="preserve"><value>Giá tăng dần</value></data>
+  <data name="Price: high to low" xml:space="preserve"><value>Giá giảm dần</value></data>
+  <data name="Preparation time: shortest first" xml:space="preserve"><value>Thời gian chế biến tăng dần</value></data>
+  <data name="Image" xml:space="preserve"><value>Ảnh</value></data>
+  <data name="Price" xml:space="preserve"><value>Giá</value></data>
+  <data name="Preparation time" xml:space="preserve"><value>Thời gian chế biến</value></data>
+  <data name="Preparation time (minutes)" xml:space="preserve"><value>Thời gian chế biến (phút)</value></data>
+  <data name="Speed" xml:space="preserve"><value>Phân loại</value></data>
+  <data name="min" xml:space="preserve"><value>phút</value></data>
+  <data name="No image" xml:space="preserve"><value>Chưa có ảnh</value></data>
+  <data name="No dishes match your search." xml:space="preserve"><value>Không tìm thấy món ăn nào phù hợp với điều kiện tìm kiếm.</value></data>
+  <data name="Total: {0} dish(es)" xml:space="preserve"><value>Tổng số: {0} món</value></data>
+  <data name="Available" xml:space="preserve"><value>Đang bán</value></data>
+  <data name="Unavailable" xml:space="preserve"><value>Ngừng bán</value></data>
+  <data name="Quick" xml:space="preserve"><value>Nhanh</value></data>
+  <data name="Regular" xml:space="preserve"><value>Thông thường</value></data>
+  <data name="Price filter must be a valid number." xml:space="preserve"><value>Giá tìm kiếm phải là số hợp lệ.</value></data>
+  <data name="Dish category filter is not valid." xml:space="preserve"><value>Loại món tìm kiếm không hợp lệ.</value></data>
+  <data name="Price filter must not be negative." xml:space="preserve"><value>Giá tìm kiếm không được là số âm.</value></data>
+  <data name="Minimum price must not be greater than maximum price." xml:space="preserve"><value>Giá thấp nhất không được lớn hơn giá cao nhất.</value></data>
+  <data name="Dish category with Id = {0} does not exist." xml:space="preserve"><value>Loại món ăn có Id = {0} không tồn tại.</value></data>
+  <data name="-- Select a category --" xml:space="preserve"><value>-- Chọn loại món --</value></data>
+  <data name="≤ 15 minutes: Quick; &gt; 15 minutes: Regular" xml:space="preserve"><value>≤ 15 phút: Nhanh; &gt; 15 phút: Thông thường</value></data>
+  <data name="Dish name is required." xml:space="preserve"><value>Tên món ăn không được để trống.</value></data>
+  <data name="Dish name must not exceed 150 characters." xml:space="preserve"><value>Tên món ăn tối đa 150 ký tự.</value></data>
+  <data name="Price must be greater than 0." xml:space="preserve"><value>Giá phải lớn hơn 0.</value></data>
+  <data name="Preparation time must be greater than 0." xml:space="preserve"><value>Thời gian chế biến phải lớn hơn 0.</value></data>
+  <data name="Please select a dish category." xml:space="preserve"><value>Vui lòng chọn loại món ăn.</value></data>
+  <data name="Description must not exceed 1000 characters." xml:space="preserve"><value>Mô tả tối đa 1000 ký tự.</value></data>
+  <data name="Description must not exceed 500 characters." xml:space="preserve"><value>Mô tả tối đa 500 ký tự.</value></data>
+  <data name="Dish category does not exist." xml:space="preserve"><value>Loại món ăn không tồn tại.</value></data>
+  <data name="Dish name already exists in this category." xml:space="preserve"><value>Tên món ăn đã tồn tại trong loại món này.</value></data>
+  <data name="Could not save. The dish name may already exist in this category." xml:space="preserve"><value>Không thể lưu. Tên món có thể đã tồn tại trong loại món này.</value></data>
+  <data name="Dish &quot;{0}&quot; was created." xml:space="preserve"><value>Đã thêm món "{0}".</value></data>
+  <data name="Dish was updated." xml:space="preserve"><value>Đã cập nhật món ăn.</value></data>
+  <data name="Dish &quot;{0}&quot; was deleted." xml:space="preserve"><value>Đã xóa món "{0}".</value></data>
+  <data name="The value '{0}' is not valid for {1}." xml:space="preserve"><value>Giá trị '{0}' không hợp lệ cho trường {1}.</value></data>
+  <data name="The value '{0}' is invalid." xml:space="preserve"><value>Giá trị '{0}' không hợp lệ.</value></data>
+  <data name="The field {0} must be a number." xml:space="preserve"><value>Trường {0} phải là số.</value></data>
+  <data name="This field is required." xml:space="preserve"><value>Trường này không được để trống.</value></data>
+  <data name="The value is not valid for {0}." xml:space="preserve"><value>Giá trị không hợp lệ cho trường {0}.</value></data>
+  <data name="The value is invalid." xml:space="preserve"><value>Giá trị không hợp lệ.</value></data>
+  <data name="The field must be a number." xml:space="preserve"><value>Trường này phải là số.</value></data>
+  <data name="Delete this dish and all its images?" xml:space="preserve"><value>Xóa món ăn này cùng toàn bộ ảnh?</value></data>
+  <data name="(No description)" xml:space="preserve"><value>(Không có mô tả)</value></data>
+  <data name="Add image by URL" xml:space="preserve"><value>Thêm ảnh bằng đường dẫn URL</value></data>
+  <data name="Set as thumbnail" xml:space="preserve"><value>Đặt làm ảnh đại diện</value></data>
+  <data name="Add image" xml:space="preserve"><value>Thêm ảnh</value></data>
+  <data name="Dish images" xml:space="preserve"><value>Ảnh món ăn</value></data>
+  <data name="This dish has no images yet. Add an image by URL." xml:space="preserve"><value>Món ăn chưa có ảnh. Hãy thêm ảnh bằng đường dẫn URL.</value></data>
+  <data name="Thumbnail" xml:space="preserve"><value>Ảnh đại diện</value></data>
+  <data name="Delete this image?" xml:space="preserve"><value>Xóa ảnh này?</value></data>
+  <data name="Image URL is required." xml:space="preserve"><value>Đường dẫn ảnh không được để trống.</value></data>
+  <data name="Image URL is not valid (must start with http:// or https://)." xml:space="preserve"><value>Đường dẫn ảnh không hợp lệ (phải bắt đầu bằng http:// hoặc https://).</value></data>
+  <data name="Image was added." xml:space="preserve"><value>Đã thêm ảnh.</value></data>
+  <data name="Thumbnail was changed." xml:space="preserve"><value>Đã đổi ảnh đại diện.</value></data>
+  <data name="Image was deleted." xml:space="preserve"><value>Đã xóa ảnh.</value></data>
+  <data name="Add category" xml:space="preserve"><value>Thêm loại món</value></data>
+  <data name="Edit category" xml:space="preserve"><value>Sửa loại món</value></data>
+  <data name="Category name" xml:space="preserve"><value>Tên loại món</value></data>
+  <data name="Number of dishes" xml:space="preserve"><value>Số món ăn</value></data>
+  <data name="Delete this category?" xml:space="preserve"><value>Xóa loại món này?</value></data>
+  <data name="No categories yet." xml:space="preserve"><value>Chưa có loại món nào.</value></data>
+  <data name="Category name is required." xml:space="preserve"><value>Tên loại món không được để trống.</value></data>
+  <data name="Category name must not exceed 100 characters." xml:space="preserve"><value>Tên loại món tối đa 100 ký tự.</value></data>
+  <data name="Category &quot;{0}&quot; was created." xml:space="preserve"><value>Đã thêm loại món "{0}".</value></data>
+  <data name="Category was updated." xml:space="preserve"><value>Đã cập nhật loại món.</value></data>
+  <data name="Category was deleted." xml:space="preserve"><value>Đã xóa loại món.</value></data>
+  <data name="Cannot delete category &quot;{0}&quot; because it still has {1} dish(es)." xml:space="preserve"><value>Không thể xóa loại món "{0}" vì vẫn còn {1} món ăn thuộc loại này.</value></data>
+  <data name="Cannot delete this category because it is in use." xml:space="preserve"><value>Không thể xóa loại món này vì đang được sử dụng.</value></data>
+  <data name="Not found" xml:space="preserve"><value>Không tìm thấy</value></data>
+  <data name="Invalid dish Id." xml:space="preserve"><value>Id món ăn không hợp lệ.</value></data>
+  <data name="Invalid category Id." xml:space="preserve"><value>Id loại món không hợp lệ.</value></data>
+  <data name="Dish with Id = {0} was not found." xml:space="preserve"><value>Không tìm thấy món ăn có Id = {0}.</value></data>
+  <data name="Dish category with Id = {0} was not found." xml:space="preserve"><value>Không tìm thấy loại món ăn có Id = {0}.</value></data>
+  <data name="Image with Id = {0} was not found." xml:space="preserve"><value>Không tìm thấy ảnh có Id = {0}.</value></data>
+  <data name="The page you requested does not exist." xml:space="preserve"><value>Trang bạn yêu cầu không tồn tại.</value></data>
+  <data name="Error" xml:space="preserve"><value>Lỗi</value></data>
+  <data name="An error occurred" xml:space="preserve"><value>Đã có lỗi xảy ra</value></data>
+  <data name="The system could not process your request. Please try again later." xml:space="preserve"><value>Hệ thống không thể xử lý yêu cầu. Vui lòng thử lại sau.</value></data>
+</root>

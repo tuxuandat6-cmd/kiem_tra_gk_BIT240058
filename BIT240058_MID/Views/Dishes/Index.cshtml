@@ -1,0 +1,137 @@
+@model DishIndexViewModel
+@{
+    ViewData["Title"] = L["Dishes"].Value;
+    var f = Model.Filter;
+
+    // Dữ liệu cho các ô chọn của bộ lọc; tham số thứ 3 (selected) giúp GIỮ NGUYÊN lựa chọn sau khi lọc
+    var categoryItems = new SelectList(Model.Categories, "Id", "Name", f.CategoryId);
+    var statusItems = new List<SelectListItem>
+    {
+        new(L["Available"], DishFilter.StatusAvailable, f.Status == DishFilter.StatusAvailable),
+        new(L["Unavailable"], DishFilter.StatusUnavailable, f.Status == DishFilter.StatusUnavailable)
+    };
+    var sortItems = new List<SelectListItem>
+    {
+        new(L["Price: low to high"], DishFilter.SortPriceAsc, f.Sort == DishFilter.SortPriceAsc),
+        new(L["Price: high to low"], DishFilter.SortPriceDesc, f.Sort == DishFilter.SortPriceDesc),
+        new(L["Preparation time: shortest first"], DishFilter.SortTimeAsc, f.Sort == DishFilter.SortTimeAsc)
+    };
+}
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+    <h1 class="h3 mb-0">@L["Dish list"]</h1>
+    <a class="btn btn-primary" asp-action="Create">+ @L["Add dish"]</a>
+</div>
+
+@* ===== FORM TÌM KIẾM / LỌC / SẮP XẾP (method GET -> điều kiện nằm trên URL) ===== *@
+<form class="card card-body mb-3" method="get" asp-action="Index">
+    <div class="row g-2">
+        <div class="col-md-4">
+            <label class="form-label small text-muted" for="keyword">@L["Dish name"]</label>
+            <input id="keyword" name="keyword" value="@f.Keyword" class="form-control" placeholder="@L["Enter part of the name..."]" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small text-muted" for="categoryId">@L["Dish category"]</label>
+            <select id="categoryId" name="categoryId" class="form-select" asp-items="categoryItems">
+                <option value="">@L["-- All categories --"]</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label small text-muted" for="status">@L["Status"]</label>
+            <select id="status" name="status" class="form-select" asp-items="statusItems">
+                <option value="">@L["-- All --"]</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small text-muted" for="sort">@L["Sort by"]</label>
+            <select id="sort" name="sort" class="form-select" asp-items="sortItems">
+                <option value="">@L["Default"]</option>
+            </select>
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small text-muted" for="minPrice">@L["Min price"]</label>
+            @* Lấy giá trị thô từ URL để giữ nguyên cả khi người dùng nhập sai *@
+            <input id="minPrice" name="minPrice" value="@Context.Request.Query["minPrice"]" class="form-control" inputmode="numeric" placeholder="20000" />
+        </div>
+        <div class="col-md-3">
+            <label class="form-label small text-muted" for="maxPrice">@L["Max price"]</label>
+            <input id="maxPrice" name="maxPrice" value="@Context.Request.Query["maxPrice"]" class="form-control" inputmode="numeric" placeholder="50000" />
+        </div>
+        <div class="col-md-6 d-flex align-items-end gap-2">
+            <button type="submit" class="btn btn-dark">@L["Search / Filter"]</button>
+            <a class="btn btn-outline-secondary" asp-action="Index">@L["Clear filters"]</a>
+        </div>
+    </div>
+</form>
+
+@* ===== Lỗi bộ lọc (giá min > max, nhập chữ vào ô giá...) ===== *@
+@foreach (var err in Model.Errors)
+{
+    <div class="alert alert-warning py-2">@err</div>
+}
+
+@* ===== BẢNG DANH SÁCH MÓN ===== *@
+<div class="card">
+    <div class="table-responsive">
+        <table class="table table-hover mb-0">
+            <thead class="table-light">
+                <tr>
+                    <th>@L["Image"]</th>
+                    <th>@L["Dish name"]</th>
+                    <th>@L["Dish category"]</th>
+                    <th class="text-end">@L["Price"]</th>
+                    <th class="text-end">@L["Preparation time"]</th>
+                    <th>@L["Speed"]</th>
+                    <th>@L["Status"]</th>
+                    <th class="text-end">@L["Actions"]</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var d in Model.Dishes)
+                {
+                    <tr>
+                        <td>
+                            @if (d.ThumbnailUrl != null)
+                            {
+                                <img src="@d.ThumbnailUrl" class="thumb-sm" alt="" />
+                            }
+                            else
+                            {
+                                <div class="thumb-empty">@L["No image"]</div>
+                            }
+                        </td>
+                        <td><a asp-action="Details" asp-route-id="@d.Id" class="fw-semibold text-decoration-none">@d.Name</a></td>
+                        <td>@d.CategoryName</td>
+                        <td class="text-end price">@d.Price.ToString("N0") ₫</td>
+                        <td class="text-end">@d.PreparationTime @L["min"]</td>
+                        @* Phân loại thời gian chế biến: tính khi hiển thị (≤ 15 phút = Nhanh) *@
+                        <td>
+                            <span class="badge @(d.IsQuick ? "text-bg-info" : "text-bg-secondary")">
+                                @L[d.IsQuick ? "Quick" : "Regular"]
+                            </span>
+                        </td>
+                        @* Món IsAvailable = false vẫn hiển thị, kèm nhãn "Ngừng bán" *@
+                        <td>
+                            <span class="badge @(d.IsAvailable ? "text-bg-success" : "text-bg-danger")">
+                                @L[d.IsAvailable ? "Available" : "Unavailable"]
+                            </span>
+                        </td>
+                        <td class="text-end text-nowrap">
+                            <a class="btn btn-sm btn-outline-primary" asp-action="Details" asp-route-id="@d.Id">@L["Details"]</a>
+                            <a class="btn btn-sm btn-outline-secondary" asp-action="Edit" asp-route-id="@d.Id">@L["Edit"]</a>
+                        </td>
+                    </tr>
+                }
+
+                @* Tìm kiếm không có kết quả *@
+                @if (Model.Dishes.Count == 0 && Model.Errors.Count == 0)
+                {
+                    <tr>
+                        <td colspan="8" class="text-center text-muted py-4">@L["No dishes match your search."]</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>
+<p class="text-muted small mt-2">@L["Total: {0} dish(es)", Model.Dishes.Count]</p>

@@ -1,0 +1,13 @@
+@{
+    // Lỗi không mong muốn: chỉ hiển thị thông báo chung, KHÔNG hiển thị chi tiết lỗi hệ thống
+    ViewData["Title"] = L["Error"].Value;
+}
+
+<div class="card card-body text-center py-5 mx-auto" style="max-width: 640px">
+    <div class="display-4 fw-bold text-secondary">@Context.Response.StatusCode</div>
+    <h1 class="h4 mt-2">@L["An error occurred"]</h1>
+    <p class="text-muted">@L["The system could not process your request. Please try again later."]</p>
+    <div>
+        <a class="btn btn-primary" asp-controller="Dishes" asp-action="Index">@L["Back to dish list"]</a>
+    </div>
+</div>

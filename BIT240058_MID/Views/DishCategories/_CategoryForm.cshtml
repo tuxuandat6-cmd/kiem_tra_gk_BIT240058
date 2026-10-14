@@ -1,0 +1,15 @@
+@model DishCategory_BIT240058
+@* Form dùng chung cho Create / Edit loại món *@
+<div asp-validation-summary="ModelOnly" class="text-danger mb-2"></div>
+
+<div class="mb-3">
+    <label asp-for="Name" class="form-label"></label> <span class="text-danger">*</span>
+    <input asp-for="Name" class="form-control" />
+    <span asp-validation-for="Name" class="text-danger small"></span>
+</div>
+
+<div class="mb-4">
+    <label asp-for="Description" class="form-label"></label>
+    <textarea asp-for="Description" rows="3" class="form-control"></textarea>
+    <span asp-validation-for="Description" class="text-danger small"></span>
+</div>

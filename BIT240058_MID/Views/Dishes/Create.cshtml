@@ -1,0 +1,17 @@
+@model Dish_BIT240058
+@{
+    ViewData["Title"] = L["Add dish"].Value;
+}
+
+<div style="max-width: 760px">
+    <h1 class="h3 mb-3">@L["Add dish"]</h1>
+
+    @* novalidate: tắt kiểm tra của trình duyệt để câu báo lỗi do server trả về (đã dịch) được hiển thị *@
+    <form asp-action="Create" method="post" class="card card-body" novalidate>
+        <partial name="_DishForm" model="Model" />
+        <div class="d-flex gap-2">
+            <button type="submit" class="btn btn-primary">@L["Save"]</button>
+            <a asp-action="Index" class="btn btn-outline-secondary">@L["Cancel"]</a>
+        </div>
+    </form>
+</div>

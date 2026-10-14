@@ -1,0 +1,105 @@
+@model Dish_BIT240058
+@{
+    ViewData["Title"] = Model.Name;
+    // Controller đã sắp xếp: ảnh đại diện luôn đứng đầu danh sách
+    var thumbnail = Model.Images.FirstOrDefault(i => i.IsThumbnail);
+}
+
+<a asp-action="Index" class="text-decoration-none small">&larr; @L["Back to list"]</a>
+
+<div class="d-flex justify-content-between align-items-start mt-2 mb-3">
+    <div>
+        <h1 class="h3 mb-1">@Model.Name</h1>
+        <span class="badge @(Model.IsAvailable ? "text-bg-success" : "text-bg-danger")">
+            @L[Model.IsAvailable ? "Available" : "Unavailable"]
+        </span>
+        <span class="badge @(Model.IsQuick ? "text-bg-info" : "text-bg-secondary")">@L[Model.PreparationType]</span>
+    </div>
+    <div class="d-flex gap-2">
+        <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@Model.Id">@L["Edit"]</a>
+        <form asp-action="Delete" asp-route-id="@Model.Id" method="post"
+              onsubmit="return confirm('@L["Delete this dish and all its images?"]');">
+            <button type="submit" class="btn btn-outline-danger">@L["Delete"]</button>
+        </form>
+    </div>
+</div>
+
+<div class="row g-3">
+    @* ===== THÔNG TIN MÓN ĂN ===== *@
+    <div class="col-lg-5">
+        <div class="card card-body">
+            @if (thumbnail != null)
+            {
+                <img src="@thumbnail.ImageUrl" class="hero-img mb-3" alt="@Model.Name" />
+            }
+            <dl class="row mb-0">
+                <dt class="col-5">Id</dt>
+                <dd class="col-7">@Model.Id</dd>
+                <dt class="col-5">@L["Dish category"]</dt>
+                <dd class="col-7">@Model.DishCategory?.Name</dd>
+                <dt class="col-5">@L["Price"]</dt>
+                <dd class="col-7 price">@Model.Price.ToString("N0") ₫</dd>
+                <dt class="col-5">@L["Preparation time"]</dt>
+                <dd class="col-7">@Model.PreparationTime @L["min"]</dd>
+                <dt class="col-5">@L["Description"]</dt>
+                <dd class="col-7">@(string.IsNullOrWhiteSpace(Model.Description) ? L["(No description)"].Value : Model.Description)</dd>
+            </dl>
+        </div>
+
+        @* ===== THÊM ẢNH BẰNG URL ===== *@
+        <form asp-action="AddImage" method="post" class="card card-body mt-3" novalidate>
+            <h2 class="h6">@L["Add image by URL"]</h2>
+            <input type="hidden" name="dishId" value="@Model.Id" />
+            <input type="text" name="imageUrl" class="form-control mb-2" placeholder="https://example.com/image.jpg" />
+            <div class="form-check mb-2">
+                <input class="form-check-input" type="checkbox" name="isThumbnail" value="true" id="chkThumb" />
+                <label class="form-check-label" for="chkThumb">@L["Set as thumbnail"]</label>
+            </div>
+            <button type="submit" class="btn btn-primary">@L["Add image"]</button>
+        </form>
+    </div>
+
+    @* ===== TẤT CẢ ẢNH CỦA MÓN ===== *@
+    <div class="col-lg-7">
+        <div class="card card-body">
+            <h2 class="h5 mb-3">@L["Dish images"] <small class="text-muted">(@Model.Images.Count)</small></h2>
+
+            @* Món chưa có ảnh *@
+            @if (Model.Images.Count == 0)
+            {
+                <div class="alert alert-secondary mb-0">@L["This dish has no images yet. Add an image by URL."]</div>
+            }
+
+            <div class="row g-3">
+                @foreach (var img in Model.Images)
+                {
+                    <div class="col-sm-6">
+                        <div class="card gallery-card h-100 @(img.IsThumbnail ? "is-thumb" : "")">
+                            <img src="@img.ImageUrl" class="card-img-top gallery-img" alt="" />
+                            <div class="card-body p-2 d-flex justify-content-between align-items-center">
+                                @if (img.IsThumbnail)
+                                {
+                                    <span class="badge text-bg-primary">@L["Thumbnail"]</span>
+                                }
+                                else
+                                {
+                                    @* Đổi ảnh đại diện: ảnh cũ sẽ tự chuyển thành ảnh thường *@
+                                    <form asp-action="SetThumbnail" method="post">
+                                        <input type="hidden" name="dishId" value="@Model.Id" />
+                                        <input type="hidden" name="imageId" value="@img.Id" />
+                                        <button type="submit" class="btn btn-sm btn-outline-primary">@L["Set as thumbnail"]</button>
+                                    </form>
+                                }
+                                <form asp-action="DeleteImage" method="post" onsubmit="return confirm('@L["Delete this image?"]');">
+                                    <input type="hidden" name="dishId" value="@Model.Id" />
+                                    <input type="hidden" name="imageId" value="@img.Id" />
+                                    <button type="submit" class="btn btn-sm btn-link text-danger">@L["Delete"]</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
